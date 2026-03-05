@@ -139,7 +139,7 @@
 #sdapp .pcard{background:var(--sf);border:1px solid var(--bd);border-radius:12px;padding:14px;cursor:pointer;transition:all .2s;overflow:hidden;}
 #sdapp .pcard:hover{border-color:var(--ac);transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.3);}
 #sdapp .pcs{font-size:0.61rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mt);margin-bottom:5px;}
-#sdapp .pct{font-size:0.84rem;font-weight:600;margin-bottom:7px;line-height:1.3;}
+#sdapp .pct{font-size:0.84rem;font-weight:600;margin-bottom:7px;line-height:1.3;color:#e8eaf0;}
 #sdapp .pcm{display:flex;align-items:center;gap:7px;font-size:0.62rem;color:var(--mt);}
 /* SCORE CARDS */
 #sdapp .scgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;}
@@ -151,8 +151,24 @@
 #sdapp .stucard{background:var(--sf);border:1px solid var(--bd);border-radius:12px;padding:15px;cursor:pointer;transition:all .2s;}
 #sdapp .stucard:hover{border-color:var(--bl);transform:translateY(-2px);}
 #sdapp .stuav{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700;margin-bottom:9px;font-family:'Fraunces',serif;}
-#sdapp .stunm{font-size:0.8rem;color:#fafbfc !important;font-weight:600;margin-bottom:2px;}
-#sdapp .sturol{font-size:0.64rem;color:var(--mt);}
+#sdapp .stunm{font-size:0.8rem;font-weight:600;margin-bottom:2px;color:#e8eaf0;}
+#sdapp strong,#sdapp b{color:#e8eaf0;}
+#sdapp .tbl td{color:#e8eaf0 !important;}
+#sdapp .tbl th{color:#6b7490 !important;}
+#sdapp .tbl td *{color:inherit;}
+#sdapp .stucard *:not(.stuavg){color:#e8eaf0;}
+#sdapp .stucard .sturol{color:#a0a8c0 !important;}
+#sdapp .pcard .pct{color:#e8eaf0 !important;}
+#sdapp .pcard .pcm{color:#a0a8c0 !important;}
+#sdapp .sccard *{color:#e8eaf0;}
+#sdapp .mat-title{color:#e8eaf0 !important;}
+#sdapp .mat-sub{color:#a0a8c0 !important;}
+#sdapp input,#sdapp select,#sdapp textarea{color:#e8eaf0 !important;}
+#sdapp .spt{color:#e8eaf0 !important;}
+#sdapp .ctit{color:#6b7490 !important;}
+#sdapp .tbl td{color:#e8eaf0;}
+#sdapp .tbl td input,#sdapp .tbl td select{color:#e8eaf0;}
+#sdapp .sturol{font-size:0.64rem;color:#a0a8c0;}
 #sdapp .stuavg{font-size:0.68rem;margin-top:7px;font-weight:600;}
 /* MARKS MATRIX */
 #sdapp .mmtbl th,#sdapp .mmtbl td{text-align:center;padding:8px 9px;}
@@ -572,7 +588,7 @@ function rdash(){
 function rstu(){
   ubadges();
   document.getElementById('stu-grid').innerHTML=SD.students.map(function(s,i){var av=savg(s.id);var g=av!==null?gr(av):null;return '<div class="stucard" data-sv="'+s.id+'"><div class="stuav" style="background:'+avc(i)+'33;color:'+avc(i)+'">'+ini(s.name)+'</div><div class="stunm">'+esc(s.name)+'</div><div class="sturol">Roll: '+esc(s.roll)+' &#183; '+esc(s.cls)+'</div><div class="stuavg" style="color:'+(g?g.c:'#6b7490')+'">'+(av!==null?'Avg: '+av+'% ('+g.g+')':'No scores yet')+'</div></div>';}).join('')||'<div class="empty" style="grid-column:1/-1"><div class="ei">&#127891;</div><div class="et">No students added</div></div>';
-  document.getElementById('stu-tbody').innerHTML=SD.students.map(function(s,i){var av=savg(s.id);var g=av!==null?gr(av):null;return '<tr><td>'+(i+1)+'</td><td><strong>'+esc(s.name)+'</strong></td><td>'+esc(s.roll)+'</td><td>'+esc(s.cls)+'</td><td>'+(av!==null?'<span style="font-weight:700;color:'+g.c+'">'+av+'% ('+g.g+')</span>':'<span style="color:#6b7490">&#8212;</span>')+'</td><td><div class="acts"><button class="btn bb" style="padding:3px 7px;font-size:0.62rem" data-sv="'+s.id+'">&#128202;</button><button class="btn bg" style="padding:3px 7px;font-size:0.62rem" data-edit-stu="'+s.id+'">&#9999;</button><button class="btn bd" style="padding:3px 7px;font-size:0.62rem" data-del="students" data-did="'+s.id+'">&#128465;</button></div></td></tr>';}).join('')||'<tr><td colspan="6"><div class="empty"><div class="ei">&#127891;</div><div class="et">No students</div></div></td></tr>';
+  document.getElementById('stu-tbody').innerHTML=SD.students.map(function(s,i){var av=savg(s.id);var g=av!==null?gr(av):null;return '<tr><td>'+(i+1)+'</td><td><strong style="color:#e8eaf0">'+esc(s.name)+'</strong></td><td>'+esc(s.roll)+'</td><td>'+esc(s.cls)+'</td><td>'+(av!==null?'<span style="font-weight:700;color:'+g.c+'">'+av+'% ('+g.g+')</span>':'<span style="color:#6b7490">&#8212;</span>')+'</td><td><div class="acts"><button class="btn bb" style="padding:3px 7px;font-size:0.62rem" data-sv="'+s.id+'">&#128202;</button><button class="btn bg" style="padding:3px 7px;font-size:0.62rem" data-edit-stu="'+s.id+'">&#9999;</button><button class="btn bd" style="padding:3px 7px;font-size:0.62rem" data-del="students" data-did="'+s.id+'">&#128465;</button></div></td></tr>';}).join('')||'<tr><td colspan="6"><div class="empty"><div class="ei">&#127891;</div><div class="et">No students</div></div></td></tr>';
   applyAuthState();
 }
 function viewStu(id){
@@ -600,7 +616,7 @@ function viewExam(id){var e=SD.exams.find(function(x){return x.id===id;});if(!e)
 ============================================================ */
 function rscores(){
   document.getElementById('sc-grid').innerHTML=SD.subjects.map(function(s){var ss=SD.scores.filter(function(sc){return sc.subject===s;});var c=SD.sc[s]||'#888';if(!ss.length)return '<div class="sccard"><div class="scsub" style="color:'+c+'">'+s+'</div><div style="color:#6b7490;font-size:0.71rem">No scores yet</div></div>';var av=Math.round(ss.reduce(function(a,x){return a+x.score/x.out*100;},0)/ss.length);var g=gr(av);return '<div class="sccard"><div class="scsub" style="color:'+c+'">'+s+'</div><div class="scbig">'+av+'<span style="font-size:0.78rem;color:#6b7490">%</span></div><div style="font-size:0.62rem;color:#6b7490;margin-top:3px">'+ss.length+' records</div><div style="font-size:0.88rem;font-weight:700;color:'+g.c+';margin-top:4px">'+g.g+'</div></div>';}).join('');
-  document.getElementById('score-tbody').innerHTML=SD.scores.slice().sort(function(a,b){return new Date(b.date)-new Date(a.date);}).map(function(s){var p=Math.round(s.score/s.out*100);var g=gr(p);return '<tr><td style="font-weight:500">'+esc(s.exam)+'</td><td>'+stag(s.subject)+'</td><td>'+esc(s.sname||'--')+'</td><td style="font-family:Fraunces,serif;font-size:0.95rem;font-weight:700">'+s.score+'</td><td style="color:#6b7490">'+s.out+'</td><td><div class="sbg" style="width:56px;display:inline-block"><div class="sbf" style="width:'+p+'%;background:'+g.c+'"></div></div><span style="font-size:0.65rem;color:'+g.c+';margin-left:4px">'+p+'%</span></td><td style="font-weight:700;color:'+g.c+'">'+g.g+'</td><td><div class="acts"><button class="btn bd" style="padding:3px 7px;font-size:0.61rem" data-del="scores" data-did="'+s.id+'">&#128465;</button></div></td></tr>';}).join('')||'<tr><td colspan="8"><div class="empty"><div class="ei">&#127942;</div><div class="et">No scores yet</div></div></td></tr>';
+  document.getElementById('score-tbody').innerHTML=SD.scores.slice().sort(function(a,b){return new Date(b.date)-new Date(a.date);}).map(function(s){var p=Math.round(s.score/s.out*100);var g=gr(p);return '<tr><td style="font-weight:500;color:#e8eaf0">'+esc(s.exam)+'</td><td>'+stag(s.subject)+'</td><td style="color:#e8eaf0">'+esc(s.sname||'--')+'</td><td style="font-family:Fraunces,serif;font-size:0.95rem;font-weight:700">'+s.score+'</td><td style="color:#6b7490">'+s.out+'</td><td><div class="sbg" style="width:56px;display:inline-block"><div class="sbf" style="width:'+p+'%;background:'+g.c+'"></div></div><span style="font-size:0.65rem;color:'+g.c+';margin-left:4px">'+p+'%</span></td><td style="font-weight:700;color:'+g.c+'">'+g.g+'</td><td><div class="acts"><button class="btn bd" style="padding:3px 7px;font-size:0.61rem" data-del="scores" data-did="'+s.id+'">&#128465;</button></div></td></tr>';}).join('')||'<tr><td colspan="8"><div class="empty"><div class="ei">&#127942;</div><div class="et">No scores yet</div></div></td></tr>';
   applyAuthState();
 }
 
@@ -628,7 +644,7 @@ function domarks(){
     var ps=vals.map(function(v){return v.p;}).filter(function(p){return p!==null;});
     var av=ps.length?Math.round(ps.reduce(function(a,b){return a+b;},0)/ps.length):null;
     var g=av!==null?gr(av):null;
-    return '<tr><td><strong>'+esc(st.name)+'</strong><div style="font-size:0.61rem;color:#6b7490">'+esc(st.roll)+'</div></td>'+vals.map(function(v){return '<td style="text-align:center">'+v.html+'</td>';}).join('')+'<td style="text-align:center;font-weight:700;color:'+(g?g.c:'#6b7490')+'">'+(av!==null?av+'% '+g.g:'&#8212;')+'</td></tr>';
+    return '<tr><td><strong style="color:#e8eaf0">'+esc(st.name)+'</strong><div style="font-size:0.61rem;color:#6b7490">'+esc(st.roll)+'</div></td>'+vals.map(function(v){return '<td style="text-align:center">'+v.html+'</td>';}).join('')+'<td style="text-align:center;font-weight:700;color:'+(g?g.c:'#a0a8c0')+'">'+(av!==null?av+'% '+g.g:'&#8212;')+'</td></tr>';
   }).join('')+'</tbody>';
   document.getElementById('mk-tbl').innerHTML=th+tb;
   applyAuthState();
